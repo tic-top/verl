@@ -317,6 +317,9 @@ def deepseekv2_dtensor_weight_loader(actor_weights: Dict, vllm_model: nn.Module)
 def gpt2_dtensor_weight_loader(actor_weights: Dict, vllm_model: nn.Module) -> nn.Module:
     pass
 
+def chameleon_dtensor_weight_loader(actor_weights: Dict, vllm_model: nn.Module) -> nn.Module:
+    pass
+
 
 def redistribute_dtensor(param_name: str, loaded_weights: DTensor, parallelize_plan: Dict = None):
     param_name = _process_parameter_names(name=param_name)
@@ -365,6 +368,7 @@ __MODEL_DTENSOR_WEIGHT_LOADER_REGISTRY__ = {
     "DeepseekV2ForCausalLM": deepseekv2_dtensor_weight_loader,
     "Qwen2VLForConditionalGeneration": qwen2vl_dtensor_weight_loader,
     "Qwen2_5_VLForConditionalGeneration": qwen2vl_dtensor_weight_loader,
+    "ChameleonForConditionalGeneration": chameleon_dtensor_weight_loader,
 }
 
 
